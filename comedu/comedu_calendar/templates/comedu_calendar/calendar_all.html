@@ -10,13 +10,6 @@
 
     </head>
     {% block content %}
-
-
-    <form type="get" action="." style="margin: 0">
-      <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
-      <button id="search_submit" type="submit" >Submit</button>
-    </form>
-
               {% for calendar in calendars %}
                   <div class="calendar">
                       <h1><a href="{% url 'calendar:cal_detail' pk=calendar.pk %}">{{ calendar.title }}</a></h1>
@@ -24,6 +17,12 @@
                       <p>{{ calendar.classify }}</p>
                   </div>
               {% endfor %}
+
+              <form type="get" action="calendar_search" style="margin: 0">
+                <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
+                <button id="search_submit" type="submit" >Submit</button>
+              </form>
+            </br>
 
 
     <div class='footer'>

@@ -54,3 +54,9 @@ def calendar_edit(request,pk):
         else:
             form = CalendarForm()
         return render(request, 'comedu_calendar/calendar_edit.html', {'form': form})
+
+
+def calendar_search(request):
+    if request.method == 'GET':
+        search_query = request.get.object.filter(title='search_box')
+    return (request, 'comedu_calendar/calendar_search.html',{'results':search_query})

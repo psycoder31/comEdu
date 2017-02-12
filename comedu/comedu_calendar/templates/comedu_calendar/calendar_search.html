@@ -1,0 +1,7 @@
+<form action="{% url 'calendar_search' %}" method="get">
+    {{form}}
+    <input type="submit" name="submit" value="Query"  />
+</form>
+{% if results %}
+  {{results.title}}
+{% endif %}

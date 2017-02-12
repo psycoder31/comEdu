@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     ##add for calendar
     url(r'^calendar/', include('comedu_calendar.urls')),
+    url(r'^search/$', calendar_search),
 ]

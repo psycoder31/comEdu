@@ -18,12 +18,11 @@
                   </div>
               {% endfor %}
 
-              <form type="get" action="calendar_search" style="margin: 0">
-                <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
-                <button id="search_submit" type="submit" >Submit</button>
-              </form>
-            </br>
 
+              <form action="/search/" method="get">
+                <input type="text" name="q">
+                <input type="submit" value="Search">
+              </form>
 
     <div class='footer'>
   <span>

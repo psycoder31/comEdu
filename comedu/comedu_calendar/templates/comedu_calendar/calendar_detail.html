@@ -8,6 +8,6 @@
                   <p>{{ calendar.end|date:"Y년 m월 d일 D h시 i분"}}</p>
                   <p>{{ calendar.classify|linebreaksbr }}</p>
               </div>
-              <a href="{url 'views.calendar_edit' pk=calendar.pk %}">수정하기</a>
-
+              <a href="/calendar/{{calendar.pk}}/edit">수정하기</a>
+<!-- {%url 'calendar:calendar_edit' calendar.pk %} -->
 {% endblock content %}

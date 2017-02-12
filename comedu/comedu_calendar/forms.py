@@ -13,14 +13,3 @@ class CalendarForm(forms.ModelForm):
     class Meta:
         model = CalendarEvent
         fields = ('title', 'context', 'start', 'end', 'classify',)
-
-
-class CalendarFilter(django_filters.FilterSet):
-    name = django_filters.CharFilter(lookup_expr='icontains')
-
-    class Meta:
-        model = CalendarEvent
-        fields = ['title', 'context','start', 'end', 'classify']
-
-class Calendar_search(forms.Form):
-    search_word = models.CharField(max_length = 20)

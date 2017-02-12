@@ -1,7 +1,11 @@
-<form action="{% url 'calendar_search' %}" method="get">
-    {{form}}
-    <input type="submit" name="submit" value="Query"  />
-</form>
-{% if results %}
-  {{results.title}}
+<p>검색내용: <strong>{{ query }}</strong></p>
+
+{% if calendars %}
+    <ul>
+        {% for calendar in calendars %}
+        <li><h1><a href="{% url 'calendar:cal_detail' pk=calendar.pk %}">{{ calendar.title }}</a></h1></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>일정이 없습니다.</p>
 {% endif %}

@@ -1,0 +1,34 @@
+<h2>{{object.title}}</h2>
+
+<p class="other_posts">
+  {% if object.get_previous_by_modify_date %}
+  <a href="{{ object.get_previous_post.get_absolute_url }}" title="View previous post">&laquo; --{{object.get_previous_post}}</a>
+  {% endif %}
+
+  {% if object.get_next_by_modify_date %}
+  <a href="{{ object.get_next_post.get_absolute_url }}" title="View next post">--&raquo;{{object.get_next_post}}</a>
+  {% endif %}
+
+</p>
+<p class="date">{{ object.modify_date|date:"j F Y" }}</p>
+<br/>
+
+<div class="body">
+  {{object.content|linebreaks}}
+  {% if object.photo %}
+    <img src = "{{ object.photo.url }}" />
+  {% endif %}
+
+</div>
+
+<h5> Comments </h5>
+<a href = "{% url "blog.views.comment_new" post.pk %}">댓글 쓰기</a>
+
+<ul>
+  {% for comment in post.comment_set.all %}
+    <li>
+      {{ comment.message}}
+      <small>by {{ comment.author }}, {{comment.created_at }} </small>
+    </li>
+  {% endfor %}
+</ul>

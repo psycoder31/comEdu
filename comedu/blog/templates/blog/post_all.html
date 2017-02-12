@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<head>
+  <style>
+   body{
+     background-color: skyblue;
+   }
+   #title{
+     text-align: center;
+   }
+   .content{
+     text-align: center;
+     background-color: white;
+     max-width: 70%;
+     margin: 40px auto;#컨텐트랑 밖에 있는 거 여백
+     padding: 10px;#안쪽 여백
+     position :
+
+   }
+
+
+  </style>
+</head>
+
+
+<body>
+<h1 id='title'>Blog List</h1>
+
+{% for post in posts %}
+<div class = 'content'>
+  <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+  {{ post.modify_date|date:"M d, Y" }}
+  <p>{{ post.description }} </p>
+</div>
+{% endfor %}
+
+<br/>
+
+<div class='footer'>
+  <span>
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
+    {% endif %}
+
+    page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+    {% endif %}
+  </span>
+</div>
+</body>

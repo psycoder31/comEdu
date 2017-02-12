@@ -1,0 +1,10 @@
+{% extends 'comedu_calendar/base.html' %}
+
+{% block content %}
+    <h1>New Schedule</h1>
+    <form method="POST" class="calendar-form">{% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+
+{% endblock %}

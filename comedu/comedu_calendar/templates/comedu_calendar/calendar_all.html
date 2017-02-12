@@ -1,0 +1,36 @@
+{% extends 'comedu_calendar/base.html' %}
+
+
+<html>
+    <head>
+        <title>comedu_calendar</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    </head>
+    {% block content %}
+              {% for calendar in calendars %}
+                  <div class="calendar">
+                      <h1><a href="{% url 'calendar:cal_detail' pk=calendar.id %}">{{ calendar.title }}</a></h1>
+                      <p>{{ calendar.start | date:'Y년 m월 d일'}}</p>
+                      <p>{{ calendar.classify }}</p>
+                  </div>
+              {% endfor %}
+
+
+    <div class='footer'>
+  <span>
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}">이전 페이지</a>
+    {% endif %}
+
+    page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">다음 페이지</a>
+    {% endif %}
+  </span>
+</div>
+{% endblock content %}
+</html>

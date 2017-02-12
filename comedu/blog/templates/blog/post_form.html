@@ -1,8 +1,8 @@
 <form action="" method="POST">
   {% csrf_token %}
   <table>
-    {{ forms.as_table }}
+    {{ form.as_table }}
   </table>
 
-  <input type = "submit"/>
+  <input type = "submit" value="제출"/>
 </form>

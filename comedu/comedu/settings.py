@@ -40,16 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'customuser',
-<<<<<<< HEAD
-
     #for calendar
     'comedu_calendar',
 
     'blog',
-
-=======
-    'board',
->>>>>>> 456816afd2a7e2312f17ea7c170a0a5afe2f3e39
 ]
 
 MIDDLEWARE = [

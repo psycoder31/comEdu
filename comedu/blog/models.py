@@ -13,20 +13,11 @@ class Post(models.Model):
         'CREATE DATE',
         auto_now_add = True
     )
-
-    slug = models.SlugField('SLUG',
-    # unique = True,
-    allow_unicode = True,
-    help_text = 'one word for title alias',
-    default = '')
-
     modify_date = models.DateTimeField(
         'MODIFY DATE',
         auto_now = True
     )
-### Pillow 다운받기 해결하고 이미지업로드기능넣기
-    # photo = models.ImageField(blank = True, null = True)
-
+    photo = models.ImageField(blank = True, null = True)
 ###필드 타입 외 변수들 저장
     class Meta:
         verbose_name = 'post'
@@ -38,13 +29,14 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('blog:post_detail', args=(self.slug,))
+        return reverse('blog:post_detail', args=(self.id,))
 
     def get_previous_post(self):
         return self.get_previous_post_by_modify_date()
 
     def get_next_post(self):
         return self.get_next_post_by_modify_date()
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post)

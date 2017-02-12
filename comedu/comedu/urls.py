@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # polls app url
-    # url(r'^polls/', include('polls.urls')),
+    url(r'^polls/', include('polls.urls')),
 
     # main page
     url(r'^$', mainView, name='home'),

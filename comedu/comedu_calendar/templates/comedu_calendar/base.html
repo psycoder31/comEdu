@@ -1,0 +1,42 @@
+{% load staticfiles %}
+
+
+<html>
+    <head>
+      <style>
+      body{
+
+  }
+  title{
+    text-align: center;
+  }
+  .content{
+    text-align: center;
+    background-color:skyblue;
+    margin: 40px auto;#컨텐트랑 밖에 있는 거 여백
+    padding: 20px;#안쪽 여백
+
+
+  }
+        <title>comedu_calendar</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+      </style>
+    </head>
+
+      <body>
+        <div class="page-header">
+          <a href="{/}"> COMEDU CALENDAR </a>
+
+        </div>
+        <div class="content container">
+          <div class="row">
+            <div class="col-md-8">
+              {% block content %}
+              {% endblock %}
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

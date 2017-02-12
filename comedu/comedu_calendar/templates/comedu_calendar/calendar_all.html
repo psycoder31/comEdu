@@ -1,4 +1,4 @@
-{% extends 'comedu_calendar/base.html' %}
+ {% extends 'comedu_calendar/base.html' %}
 
 
 <html>
@@ -9,7 +9,8 @@
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
     </head>
-    {% block content %}
+
+{% block content %}
               {% for calendar in calendars %}
                   <div class="calendar">
                       <h1><a href="{% url 'calendar:cal_detail' pk=calendar.pk %}">{{ calendar.title }}</a></h1>
@@ -19,10 +20,13 @@
               {% endfor %}
 
 
+
               <form action="/search/" method="get">
                 <input type="text" name="q">
                 <input type="submit" value="Search">
               </form>
+
+              <h1><a href="{% url 'calendar:calendar_new' %}">작성하기</a></h1></br>
 
     <div class='footer'>
   <span>
@@ -37,5 +41,6 @@
     {% endif %}
   </span>
 </div>
+
 {% endblock content %}
 </html>

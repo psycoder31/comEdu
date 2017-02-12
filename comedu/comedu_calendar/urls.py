@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^new/$', views.calendar_new, name='calendar_new'),
     url(r'^(?P<pk>[0-9]+)/edit$', views.calendar_edit, name = 'calendar_edit'), ##name = 왼쪽 주소
     url(r'^calendar_search$', views.calendar_search, name = 'calendar_search'),
-
+    url(r'^(?P<pk>[0-9]+)/delete$', views.calendar_delete, name = 'calendar_delete'),
     ]

@@ -20,6 +20,6 @@ from comedu_calendar.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     ##add for calendar
-    url(r'^calendar/', include('comedu_calendar.urls')),
+    url(r'^calendar/', include('comedu_calendar.urls', namespace = 'calendar')),
     url(r'^search/$', calendar_search),
 ]

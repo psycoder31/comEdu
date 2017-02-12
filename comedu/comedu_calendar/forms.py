@@ -6,10 +6,11 @@ from django.utils import timezone
 
 import django_filters
 
-...
 class CalendarForm(forms.ModelForm):
     start = forms.DateField(widget=SelectDateWidget, initial=timezone.now())
     end = forms.DateField(widget=SelectDateWidget, initial=timezone.now())
+
     class Meta:
         model = CalendarEvent
         fields = ('title', 'context', 'start', 'end', 'classify',)
+        ##ordering = ('start',)왜 실행이 안될까?

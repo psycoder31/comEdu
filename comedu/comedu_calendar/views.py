@@ -35,9 +35,10 @@ def calendar_new(request):
             if form.is_valid():
                 calendar = form.save(commit=False)
                 calendar.save()
-                return render(request, 'comedu_calendar/calendar_success.html')
+                return redirect('/calendar/')###url을 calendar로 이동
+                ##return render(request,'comedu_calendar/calendar_all.html', {'calendar':form})
         else:
-            form = CalendarForm()
+            form = CalendarForm()##????
         return render(request, 'comedu_calendar/calendar_new.html', {'form': form})
 
 
@@ -48,22 +49,26 @@ def calendar_edit(request, pk=None, template_name='comedu_calendar/calendar_edit
         return HttpResponseForbidden()
 
     form = CalendarForm(request.POST or None, instance=calendar)##CalendarForm 쓰는데 calendar에 저장되어 있는 값을 디폴트로 설정
-    if request.POST and form.is_valid():
+    if request.POST and form.is_valid():##제출 받으면
         form.save()
 
         # Save was successful, so redirect to another page
-        return render_to_response('comedu_calendar/calendar_all.html', RequestContext={'Calendars':form})#이 부분 수정
+        return redirect('/calendar/%s' %(pk))#이 부분 수정
 
     return render(request, template_name, {
         'form': form
-    })
+    })##실행 순서 : 버튼 누르면 url로 이동함과 동시에 pk값 전달 -> edit 뷰 실행 -> pk값을 가진 오브젝트를 CalendarEvent모델에서 찾아서 calendar에 저장 ->form에
+      ##원래 글 저장 -> post안 눌렀으니까 맨 마지막 줄 실행 -> form이 보임 -> 사용자가 입력 -> 제출 -> POST->if POST 밑에 실행
 
 
 def calendar_search(request):
-
     if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
         calendars = CalendarEvent.objects.filter(title__icontains = q)
         return render_to_response('comedu_calendar/calendar_search.html', {'calendars':calendars, 'query':q})
     else:
         return render_to_response('calendar_search.html',{'error':True})
+
+def calendar_delete(request, pk):
+    CalendarEvent(pk=pk).delete()
+    return redirect('/calendar/') 

@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.utils import timezone
 
 class Post(models.Model):
     title = models.CharField('TITLE',unique=True, max_length=50)
@@ -14,8 +15,7 @@ class Post(models.Model):
         auto_now_add = True
     )
     modify_date = models.DateTimeField(
-        'MODIFY DATE',
-        auto_now = True
+        'MODIFY DATE', auto_now = True
     )
     photo = models.ImageField(blank = True, null = True)
 ###필드 타입 외 변수들 저장

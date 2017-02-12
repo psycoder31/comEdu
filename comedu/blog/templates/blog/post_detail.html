@@ -10,7 +10,7 @@
   {% endif %}
 
 </p>
-<p class="date">{{ object.modify_date|date:"j F Y" }}</p>
+<p class="date">{{ object.modify_date|date:"Y/F/j일, H:m" }}</p>
 <br/>
 
 <div class="body">
@@ -30,3 +30,5 @@
   {% endfor %}
 </ul>
 <a href = "{% url 'blog:post_forms' pk=object.pk %}">댓글 쓰기</a>
+<a href = "{% url 'blog:post_edit' pk=object.pk %}">수정하기</a>
+<a href = "{% url 'blog:post_delete' pk=object.pk %}">삭제하기</a>

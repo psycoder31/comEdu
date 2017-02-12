@@ -9,7 +9,7 @@
      text-align: left;
    }
    .content{
-     text-align:left;
+     text-align: left;
      background-color: white;
      max-width: 70%;
      margin: 20px auto;#컨텐트랑 밖에 있는 거 여백
@@ -28,11 +28,12 @@
 
 {% for post in posts %}
 <div class = 'content'>
-  <h2><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h2>
-  {{ post.modify_date|date:"M d, Y" }}
+  <h3><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h2>
+  {{ post.modify_date|date:"M d일, Y" }}
   <p>{{ post.description }} </p>
 </div>
 {% endfor %}
+<h3> <a href = "{% url 'blog:new_post'  %}">글 작성하기</a> </h3>
 
 <br/>
 

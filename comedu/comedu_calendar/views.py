@@ -14,9 +14,6 @@ from .models import CalendarEvent
 from django.shortcuts import redirect
 from .forms import CalendarForm
 
->>>>>>> fffc4bed065a49a01fedf926fb34de3072df74dd
-
-
 # Create your views here.
 
 
@@ -27,10 +24,6 @@ class CalendarEventLV(ListView):
         paginate_by = 10
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> fffc4bed065a49a01fedf926fb34de3072df74dd
 def cal_detail(request, pk):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
@@ -48,7 +41,7 @@ def calendar_new(request):
             if form.is_valid():
                 calendar = form.save(commit=False)
                 calendar.save()
-<<<<<<< HEAD
+
                 messages.info(request, "일정이 성공적으로 등록되었습니다.")
                 return redirect('/calendar/')###url을 calendar로 이동
 
@@ -88,7 +81,7 @@ def calendar_search(request):
 def calendar_delete(request, pk):
     CalendarEvent(pk=pk).delete()
     return redirect('/calendar/')
-=======
+
                 return render(request, 'comedu_calendar/calendar_success.html')
         else:
             form = CalendarForm()
@@ -109,4 +102,3 @@ def calendar_edit(request,pk):
         else:
             form = CalendarForm()
         return render(request, 'comedu_calendar/calendar_edit.html', {'form': form})
->>>>>>> fffc4bed065a49a01fedf926fb34de3072df74dd

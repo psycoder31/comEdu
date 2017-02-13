@@ -15,10 +15,9 @@ class CalendarForm(forms.ModelForm):
         model = CalendarEvent
         fields = ('title', 'context', 'start', 'end', 'classify',)
         ##ordering = ('start',)왜 실행이 안될까?
-=======
+
 
 class CalendarForm(forms.ModelForm):
     class Meta:
         model = CalendarEvent
         fields = ('title', 'context', 'start', 'end', 'classify',)
->>>>>>> fffc4bed065a49a01fedf926fb34de3072df74dd

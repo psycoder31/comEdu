@@ -64,7 +64,11 @@
         <p><strong>e-mail</strong> : {{user.email}}</p>
       </div>
       <div class="jumbotron">
-        <h1>{{form.as_p}}</h1>
+        <form action="polls" method="post">{% csrf_token %}
+          <label for="poll_title">title: </label>
+          <input id="poll_title" type="text" name="poll_title" value="{{ forms.title}}">
+          <input type="submit" value="OK">
+        </form>
       </div>
       <div class="jumbotron">
         <h1>test page</h1>

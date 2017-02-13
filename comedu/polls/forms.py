@@ -6,4 +6,4 @@ class PollForm(forms.ModelForm):
 
     class Meta:
         model  = PollModel
-        fields = ('category',)
+        fields = '__all__'

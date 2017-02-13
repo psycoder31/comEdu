@@ -17,9 +17,20 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from comedu_calendar.views import *
 
+from customuser.views import mainView
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+<<<<<<< HEAD
     ##add for calendar
     url(r'^calendar/', include('comedu_calendar.urls', namespace = 'calendar')),
     url(r'^search/$', calendar_search),
+=======
+
+    # polls app url
+    url(r'^polls/', include('polls.urls')),
+
+    # main page
+    url(r'^$', mainView, name='home'),
+>>>>>>> 966c616d984e30c2d01e30bb34155714c5fc133e
 ]

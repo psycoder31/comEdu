@@ -1,0 +1,91 @@
+body{
+  background-image: url('http://www.codeconquest.com/wp-content/uploads/Coding-on-a-Macbook-Pro.jpg');
+  background-size: cover;
+}
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  width: 100%;
+  margin: auto;
+}
+.navbar-inverse, .navbar-inverse .navbar-toggle:focus{
+  border: none;
+  background: none;
+}
+
+.navbar-inverse .navbar-brand{
+  color: white;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav>li>a:hover,
+.navbar-inverse .navbar-toggle:hover{
+  color: #4a148c;
+  background: #f3e5f5;
+}
+
+.navbar-inverse .navbar-nav>li>a{
+  color: white;
+}
+
+
+.navbar-nav{
+  float: right;
+}
+
+.first-content{
+  margin-top: 10em;
+}
+
+.navbar-toggle, .navbar-inverse .navbar-toggle{
+  border: none;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+  border: none;
+}
+/* 평행사변형 */
+.parallelogram{
+  /*width: 10;*/
+	height: 25em;
+	-webkit-transform: skew(15deg);
+	   -moz-transform: skew(15deg);
+	     -o-transform: skew(15deg);
+	background: white;
+  float: left;
+  margin-left: 2em;
+  text-align: center;
+  opacity: 0.8;
+}
+
+#first{
+  background-image: url('menu1.jpg');
+}
+
+.upper{
+  margin-bottom: 2em;
+}
+
+.down{
+  margin-top: 2em;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    /*margin-right:-4px;*/
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover{
+  background: white;
+  color:#4a148c;
+  font-weight: 900;
+}
+.dropdown-toggle{
+  background: transparent;
+}
+.dropdown-menu{
+  background: transparent;
+}

@@ -19,11 +19,22 @@ from comedu_calendar.views import *
 from django.conf.urls.static import static
 from django.conf import settings
 
+from customuser.views import mainView
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+<<<<<<< HEAD
     ##add for calendar
     url(r'^calendar/', include('comedu_calendar.urls', namespace="calendar")),
     url(r'^blog/', include('blog.urls')),
+=======
+
+    # polls app url
+    url(r'^polls/', include('polls.urls')),
+
+    # main page
+    url(r'^$', mainView, name='home'),
+>>>>>>> 966c616d984e30c2d01e30bb34155714c5fc133e
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -21,9 +21,12 @@ class CalendarEvent(models.Model):
 
     def __str__(self):
         return self.title
+<<<<<<< HEAD
 
     class Meta:
         ordering = ('start',)
 
 class search(models.Model):
     search = models.CharField('검색', max_length=50)
+=======
+>>>>>>> fffc4bed065a49a01fedf926fb34de3072df74dd

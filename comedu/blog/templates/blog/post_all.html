@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+  <style>
+   body{
+     background-color: skyblue;
+   }
+   #title{
+     text-align: left;
+   }
+   .content{
+     text-align: left;
+     background-color: white;
+     max-width: 70%;
+     margin: 20px auto;#컨텐트랑 밖에 있는 거 여백
+     padding: 10px;#안쪽 여백
+     position :
+
+   }
+
+
+  </style>
+</head>
+
+
+<body>
+<h1 id='title'>자유 게시판</h1>
+
+{% for post in posts %}
+<div class = 'content'>
+  <h3><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h2>
+  {{ post.modify_date|date:"M d일, Y" }}
+  <p>{{ post.description }} </p>
+</div>
+{% endfor %}
+<h3> <a href = "{% url 'blog:new_post'  %}">글 작성하기</a> </h3>
+
+<br/>
+
+<div class='footer'>
+  <span>
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
+    {% endif %}
+
+    page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+    {% endif %}
+  </span>
+</div>
+</body>

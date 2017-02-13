@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  {% extends 'comedu_calendar/base.html' %}
+=======
+{% extends 'comedu_calendar/base.html' %}
+>>>>>>> fffc4bed065a49a01fedf926fb34de3072df74dd
 
 
 <html>
@@ -9,6 +13,7 @@
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
     </head>
+<<<<<<< HEAD
 
 {% block content %}
 
@@ -16,12 +21,19 @@
               {% for calendar in calendars %}
                   <div class="calendar">
                       <h1><a href="{% url 'calendar:cal_detail' pk=calendar.pk %}">{{ calendar.title }}</a></h1>
+=======
+    {% block content %}
+              {% for calendar in calendars %}
+                  <div class="calendar">
+                      <h1><a href="{% url 'calendar:cal_detail' pk=calendar.id %}">{{ calendar.title }}</a></h1>
+>>>>>>> fffc4bed065a49a01fedf926fb34de3072df74dd
                       <p>{{ calendar.start | date:'Y년 m월 d일'}}</p>
                       <p>{{ calendar.classify }}</p>
                   </div>
               {% endfor %}
 
 
+<<<<<<< HEAD
 
               <!-- <form action="/search/" method="get">
                 <input type="text" name="q">
@@ -30,6 +42,8 @@
 
               <h3><a href="{% url 'calendar:calendar_new' %}">작성하기</a></h3></br>
 
+=======
+>>>>>>> fffc4bed065a49a01fedf926fb34de3072df74dd
     <div class='footer'>
   <span>
     {% if page_obj.has_previous %}
@@ -43,6 +57,9 @@
     {% endif %}
   </span>
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> fffc4bed065a49a01fedf926fb34de3072df74dd
 {% endblock content %}
 </html>

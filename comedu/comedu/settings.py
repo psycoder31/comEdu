@@ -41,10 +41,17 @@ INSTALLED_APPS = [
 
     'customuser',
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     #for calendar
     'comedu_calendar',
 
+=======
+    #for calendar
+    'comedu_calendar',
+
+    'blog',
+>>>>>>> fffc4bed065a49a01fedf926fb34de3072df74dd
 =======
 <<<<<<< HEAD
     'polls',
@@ -137,3 +144,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 ##add for calendar
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+<<<<<<< HEAD
+=======
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+>>>>>>> fffc4bed065a49a01fedf926fb34de3072df74dd

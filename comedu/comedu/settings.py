@@ -40,7 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'customuser',
+<<<<<<< HEAD
     'polls',
+=======
+    'board',
+>>>>>>> bff0e6393cf872fd0cd3b23a3a5c83bf0b64fde9
 ]
 
 MIDDLEWARE = [

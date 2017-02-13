@@ -1,11 +1,10 @@
-from django.shortcuts import render, get_object_or_404,render_to_response
-from django.views.generic import ListView, DetailView
-from django.views.generic.dates import ArchiveIndexView
+from django.shortcuts import render, get_object_or_404,render_to_response, redirect, reverse
+from django.views.generic import ListView
 from .models import CalendarEvent
-from django.shortcuts import redirect, render, reverse
 from .forms import CalendarForm
 from django.http import HttpResponse
 from django.template import RequestContext
+from django.contrib import messages
 
 
 # Create your views here.
@@ -36,7 +35,7 @@ def calendar_new(request):
                 calendar = form.save(commit=False)
                 calendar.save()
                 return redirect('/calendar/')###url을 calendar로 이동
-                ##return render(request,'comedu_calendar/calendar_all.html', {'calendar':form})
+                
         else:
             form = CalendarForm()##????
         return render(request, 'comedu_calendar/calendar_new.html', {'form': form})
@@ -53,7 +52,8 @@ def calendar_edit(request, pk=None, template_name='comedu_calendar/calendar_edit
         form.save()
 
         # Save was successful, so redirect to another page
-        return redirect('/calendar/%s' %(pk))#이 부분 수정
+
+        return redirect('/calendar/%s' %(pk))
 
     return render(request, template_name, {
         'form': form
@@ -71,4 +71,4 @@ def calendar_search(request):
 
 def calendar_delete(request, pk):
     CalendarEvent(pk=pk).delete()
-    return redirect('/calendar/') 
+    return redirect('/calendar/')

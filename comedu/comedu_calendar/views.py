@@ -34,8 +34,9 @@ def calendar_new(request):
             if form.is_valid():
                 calendar = form.save(commit=False)
                 calendar.save()
+                messages.info(request, "일정이 성공적으로 등록되었습니다.")
                 return redirect('/calendar/')###url을 calendar로 이동
-                
+
         else:
             form = CalendarForm()##????
         return render(request, 'comedu_calendar/calendar_new.html', {'form': form})

@@ -11,6 +11,8 @@
     </head>
 
 {% block content %}
+
+
               {% for calendar in calendars %}
                   <div class="calendar">
                       <h1><a href="{% url 'calendar:cal_detail' pk=calendar.pk %}">{{ calendar.title }}</a></h1>

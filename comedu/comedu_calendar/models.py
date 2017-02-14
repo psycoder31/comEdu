@@ -6,8 +6,8 @@ class CalendarEvent(models.Model):
 
     title = models.CharField('Title',max_length=255)
     context = models.TextField("context")
-    start = models.DateTimeField('Start Date')
-    end = models.DateTimeField('End Date', null=True,
+    start = models.DateField('Start Date')
+    end = models.DateField('End Date', null=True,
                                blank=True)
     department = '과행사'
     personal = '개인행사'

@@ -25,6 +25,8 @@ SECRET_KEY = ')7e2!v6$a8l78)l$ohu*-@^fclfa0uttpk%+t(4#!l#q7krhn*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+LOGIN_REDIRECT_URL = '/'
+
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'customuser.MyUser'

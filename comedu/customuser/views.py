@@ -4,5 +4,5 @@ from django.shortcuts import render
 
 
 def mainView(request):
-    template = 'customuser/index.html'
+    template = 'index.html'
     return render(request, template, {})

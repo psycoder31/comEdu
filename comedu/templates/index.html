@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<haed>
+    <title>main page</title>
+    <meta charset="utf-8">
+<!--    디바이스의 환경에 맞게 view를 조절하는 것이 viewport  -->
+    <meta name="viewport" content="width=device-width, initial-sacle=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library 부트스트렙 에서 사용하는 jQuery, 이 라이브러리를 부트 스트렙 라이브러리 보다 먼저 사용하여야 한다.-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript 부트스트렙에서 제공하는 자바 스크립트 라이브러리 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background: orange;
+        }
+
+        .navbar-inverse{
+            background: #ea8425;
+            border: none;
+        }
+
+        .navbar-inverse .navbar-brand{
+          color: white;
+          font-size: 25px;
+        }
+        .navbar-inverse .navbar-brand:hover{
+          color: grey;
+        }
+
+        .navbar-inverse .navbar-nav > li > a{
+            color: white;
+        }
+        .navbar-inverse .navbar-nav > li > a:hover{
+          color: grey;
+          background: white;
+        }
+
+    </style>
+</haed>
+<body>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+       <div class="navbar-header">
+        <a class="navbar-brand" href="#">COMEDU</a>
+        </div>
+
+       <ul class="nav navbar-nav navbar-right">
+            <li><a class="ad" href="">게시판</a></li>
+            <li><a href="">유틸리티</a></li>
+            <li><a href="/login/">로그인</a></li>
+            <li><a href="/logout/">로그아웃</a></li>
+       </ul>
+    </div>
+    </nav>
+
+    <div class="container" style="margin-top: 10em;">
+      <div class="jumbotron">
+        <h1>welcome {{user.username}}</h1>
+        <p><strong>학번</strong> : {{user.student_id}}</p>
+        <p><strong>e-mail</strong> : {{user.email}}</p>
+      </div>
+      <div class="jumbotron">
+        <h1>test page</h1>
+      </div>
+      <div class="jumbotron">
+        <h1>test page</h1>
+      </div>
+      <div class="jumbotron">
+        <h1>test page</h1>
+      </div>
+      <div class="jumbotron">
+        <h1>test page</h1>
+      </div>
+      <div class="jumbotron">
+        <h1>test page</h1>
+      </div>
+
+    </div>
+</body>
+</html>

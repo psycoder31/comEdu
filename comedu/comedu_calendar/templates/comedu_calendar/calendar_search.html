@@ -9,10 +9,14 @@
     </ul>
 {% else %}
     <p>일정이 없습니다.</p>
-    <form action="/search/" method="get">
-      <input type="text" name="q">
-      <input type="submit" value="Search">
-    </form>
+    <form action="/calendar/search/" method="get">
+       <select name="category">
+         <option value="ti">TITLE</option>
+         <option value="co">CONTEXT</option>
+       </select>
+       <input type="text" name="q">
+       <input type="submit" value="Search">
+     </form>
 {% endif %}
 
 <h3><a href = "/calendar/">홈으로 돌아가기</a></h3>

@@ -36,12 +36,12 @@ def calendar_new(request):
             form = CalendarForm(request.POST)##if method = POST save all content in site which sended request in form
             if form.is_valid():
                 calendar = form.save(commit=False)##don't save directly, because should save after saving author info
-                calendar.save()
+                #calendar.save()
                 return redirect('/calendar/')
         else:
             form = CalendarForm()##????
 
-        return render(request, 'comedu_calendar/calendar_new.html', {'form': form})##why give 'form':form???
+    return render(request, 'comedu_calendar/calendar_new.html', {'form': form})##why give 'form':form???
 
 
 
@@ -65,7 +65,7 @@ def calendar_edit(request, pk=None, template_name='comedu_calendar/calendar_edit
 
 def calendar_search(request):
     if request.GET['category'] == 'ti':
-        if 'q' in request.GET and request.GET['q']:
+        if request.GET['q']:
             q = request.GET['q']
             calendars = CalendarEvent.objects.filter(title__icontains = q)
             return render_to_response('comedu_calendar/calendar_search.html', {'calendars':calendars, 'query':q})
@@ -73,7 +73,7 @@ def calendar_search(request):
             return render_to_response('calendar_search.html',{'error':True})
 
     if request.GET['category'] == 'co':
-        if 'q' in request.GET and request.GET['q']:
+        if request.GET['q']:
            q = request.GET['q']
            calendars = CalendarEvent.objects.filter(context__icontains = q)
            return render_to_response('comedu_calendar/calendar_search.html', {'calendars':calendars, 'query':q})
@@ -88,12 +88,5 @@ def calendar_delete(request, pk):
 
 
 
-
-# def calendar_success_popup(request,pk):
-#     if 'y' in request.GET:
-#         ##form.save()
-#         return redirect('/calendar/')
-#     else:
-#         CalendarEvent.delete(pk=pk)
-#         return redirect('/calendar/')
-#
+def calendar_success_popup(request):
+    return render(request,"comedu_calendar/calendar_register_popup.html")

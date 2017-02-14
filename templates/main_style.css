@@ -1,0 +1,84 @@
+/*메인컨텐츠 디비전*/
+img {
+  max-height: 100%;
+  max-width: 100%;
+  position: auto;
+  opacity: 0.7;
+}
+.carousel-caption{
+  font-weight: 700;
+  font-style: italic;
+}
+.container-fluid.first-sec{
+  padding-top: 50px;
+  border: solid;
+  /*position: relative;*/
+}
+.container-fluid.first-sec > .carousel.slide{
+  /*position: absolute;*/
+}
+.container-fluid.second-sec{
+  border: solid;
+  /*position: relative;*/
+}
+.container-fluid.third-sec{
+  border: solid;
+  /*position: relative;*/
+}
+.container-fluid{
+  padding: 0px 0px 0px 0px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height:660px;
+  width:100%;
+}
+
+/*네비게이션바 틀*/
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+  border-color: transparent;
+}
+/*네비바 둥글게 안됌 ㅅㅂ 개빡치네
+#myNavbar{
+  border-radius: 10em 10em 10em 10em;
+}
+*/
+/*메뉴창 오른쪽 띄우기*/
+.navbar-nav{
+  float: right;
+}
+
+/*메뉴창 마우스 클릭한 상태에서 두껍게*/
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover{
+  font-weight: 700;
+}
+
+/*메뉴창 두껍게*/
+.navbar-inverse .navbar-nav .dropdown-toggle:hover{
+  font-weight: 700;
+}
+
+/*login 두껍게*/
+.navbar-inverse .navbar-nav>li>a:hover{
+  font-weight: 700;
+
+/*메뉴하위항목 두껍게*/
+}
+.dropdown-menu>li>a:hover{
+  font-weight: 900;
+  background-color: black;
+  color: white;
+}
+
+/*comedu 두껍게*/
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover{
+  font-weight: 700;
+}
+
+.navbar-nav>li>.dropdown-menu{
+  background-color: #333;
+}
+.dropdown-menu>li>a{
+  color:#9d9d9d;
+}

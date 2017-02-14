@@ -1,0 +1,18 @@
+<p>검색내용: <strong>{{ query }}</strong></p>
+
+{% if calendars %}
+    <ul>
+        {% for calendar in calendars %}
+        <li><h1><a href="{% url 'calendar:cal_detail' pk=calendar.pk %}">{{ calendar.title }}</a></h1></li>
+        <h3>{{calendar.start}}</h3>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>일정이 없습니다.</p>
+    <form action="/search/" method="get">
+      <input type="text" name="q">
+      <input type="submit" value="Search">
+    </form>
+{% endif %}
+
+<h3><a href = "/calendar/">홈으로 돌아가기</a></h3>

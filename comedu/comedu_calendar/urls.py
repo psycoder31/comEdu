@@ -18,4 +18,6 @@ urlpatterns = [
 
     url(r'^search/$', views.calendar_search, name = 'calendar_search'),
 
+    url(r'^success_popup/$', views.calendar_success_popup, name = 'calendar_success_popup'),
+
     ]

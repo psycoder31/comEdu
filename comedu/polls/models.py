@@ -17,8 +17,7 @@ class PollModel(models.Model):
         default=datetime.datetime.now,
         )
 
-    author = models.ForeinKey(settings.AUTH_USER_MODEL)
-
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
     category = models.CharField(
         name='분류',
         choices=(
@@ -47,8 +46,8 @@ class PollModel(models.Model):
         return self.title
 
 class Choice(models.Model):
-    poll = models.ForeinKey(PollModel)
-    choice = modes.CharField(max_length=255)
+    poll = models.ForeignKey(PollModel)
+    choice = models.CharField(max_length=255)
 
     def count_votes(self):
         return self.vote_set.count()
@@ -60,9 +59,9 @@ class Choice(models.Model):
         ordering = ['choice',]
 
 class Vote(models.Model):
-    user = models.ForeinKey(settings.AUTH_USER_MODEL)
-    poll = models.ForeinKey(PollModel)
-    choice = models.ForeinKey(Choice)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    poll = models.ForeignKey(PollModel)
+    choice = models.ForeignKey(Choice)
 
     def __str__(self):
         return 'Votes or %s' % (self.poll)

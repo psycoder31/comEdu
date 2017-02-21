@@ -32,6 +32,7 @@ AUTH_USER_MODEL = 'customuser.MyUser'
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',##calendar
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,11 +44,18 @@ INSTALLED_APPS = [
 
     #for calendar
     'comedu_calendar',
+    'django_summernote',
+
+
 
     'blog',
 
     'polls',
 ]
+##add for calendar
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.template.context_processors.request',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,8 +68,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'comedu.urls'
-##add for calendar
-BOWER_COMPONENTS_ROOT = '/PROJECT_ROOT/components/'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -73,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'django.template.context_processors.request',##calendar
 
             ],
         },
@@ -130,7 +138,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-##add for calendar
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 

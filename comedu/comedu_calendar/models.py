@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.utils import timezone
+from django.conf import settings
 
 # Create your models here.
 class CalendarEvent(models.Model):
@@ -8,7 +10,10 @@ class CalendarEvent(models.Model):
     context = models.TextField("context")
     start = models.DateTimeField('Start Date')
     end = models.DateTimeField('End Date', null=True,
-                               blank=True)
+                               blank=True),
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, default="")
+
+
     department = '과행사'
     personal = '개인행사'
     anniversary = '연중행사'

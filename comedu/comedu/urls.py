@@ -31,7 +31,8 @@ urlpatterns = [
 
     ##add for calendar
     url(r'^calendar/', include('comedu_calendar.urls', namespace = 'calendar')),
-    # url(r'^search/$', calendar_search),
+
+    url(r'^summernote/', include('django_summernote.urls')),
 
     url(r'^blog/', include('blog.urls')),
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<head>
+  <style>
+   body{
+     background-color: skyblue;
+   }
+   #title{
+     text-align: left;
+   }
+   .content{
+     text-align: left;
+     background-color: white;
+     max-width: 70%;
+     margin: 20px auto;#컨텐트랑 밖에 있는 거 여백
+     padding: 10px;#안쪽 여백
+     position :
+
+   }
+
+
+  </style>
+</head>
+
+
+<body>
+<h1 >{{ index }}</h1>
+<h2> <a href = "{% url 'blog:index' %}"> 게시판 목록으로 </a></h2><br>
+
+{% if search %}
+  <h2> 검색내용 : {{search}} </h2>
+{% endif %}
+
+{% if error %}
+  <h2> 검색 결과가 없습니다.</h2>
+{% endif %}
+
+{% for post in posts %}
+<div class = 'content'>
+  <h3><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h2>
+  {{ post.modify_date|date:"M/d일/Y년 H:i" }}      글쓴이 : {{ post.author}}
+  <p>{{ post.description }} </p>
+</div>
+{% endfor %}<br>
+
+<form action="/blog/{{slug}}/search/" method="get">
+   <select name="category">
+     <option value="ti">TITLE</option>
+     <option value="co">CONTEXT</option>
+     <option value="au">AUTHOR</option>
+   </select>
+   <input type="text" name="q">
+   <input type="submit" value="Search">
+</form>
+
+<h3> <a href = "{% url 'blog:new_post'  %}">글 작성하기</a> </h3>
+
+<br/>
+
+<div class="pagination">
+    <span class="step-links">
+      {% if posts.has_previous %}
+          <a href="?page={{ posts.previous_page_number }}">이전 페이지</a>
+      {% endif %}
+      <span class="current">
+        Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+      </span>
+      {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">다음 페이지</a>
+      {% endif %}
+    </span>
+</div>

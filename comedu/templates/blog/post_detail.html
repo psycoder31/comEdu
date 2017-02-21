@@ -1,0 +1,43 @@
+
+<body>
+
+<h2>{{Post.title}}</h2>
+<h3>{{Post.author}}</h3>
+<p class="other_posts">
+  {% if Post.get_previous_post_by_modify_date %}
+  <a href="{{ Post.get_previous_post.get_absolute_url }}" title="View previous post">&laquo; --{{Post.get_previous_post}}</a>
+  {% endif %}
+
+  {% if Post.get_next_post_by_modify_date %}
+  <a href="{{ Post.get_next_post.get_absolute_url }}" title="View next post">--&raquo;{{Post.get_next_post}}</a>
+  {% endif %}
+
+</p>
+<p class="date">{{ Post.modify_date|date:"Y/F/j일, H:i" }}</p>
+<br/>
+
+<div class="body">
+    {{ Post.content|safe }}
+</div>
+
+<h5> Comments </h5>
+<ul>
+  {% for comment in Post.comment_set.all %}
+    <li>
+      {{ comment.message|safe}}
+      <small>by {{ comment.author}},  {{comment.create_date}} </small>
+    </li>
+  {% endfor %}
+</ul>
+
+<form action="" method="POST">
+  {% csrf_token %}
+    <input name ='message'>
+  <button type = "submit" > 댓글작성 </button>
+</form>
+
+<br>
+<a href = "{% url 'blog:post_edit' pk=Post.pk %}">수정하기</a>
+<a href = "{% url 'blog:post_delete' pk=Post.pk %}">삭제하기</a>
+
+</body>

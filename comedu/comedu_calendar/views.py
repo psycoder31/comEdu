@@ -68,17 +68,19 @@ def calendar_search(request):
         if 'q' in request.GET and request.GET['q']:
             q = request.GET['q']
             calendars = CalendarEvent.objects.filter(title__icontains = q)
-            return render_to_response('comedu_calendar/calendar_search.html', {'calendars':calendars, 'query':q})
+            return render_to_response('comedu_calendar/calendar_search.html', {'calendars':calendars,
+                'query':q,} )
         else:
-            return render_to_response('calendar_search.html',{'error':True})
+            return render_to_response('calendar_search.html',{'error':True,  })
 
     if request.GET['category'] == 'co':
         if 'q' in request.GET and request.GET['q']:
            q = request.GET['q']
            calendars = CalendarEvent.objects.filter(context__icontains = q)
-           return render_to_response('comedu_calendar/calendar_search.html', {'calendars':calendars, 'query':q})
+           return render_to_response('comedu_calendar/calendar_search.html', {'calendars':calendars,
+                'query':q,})
         else:
-           return render_to_response('calendar_search.html',{'error':True})
+           return render_to_response('calendar_search.html',{'error':True,  })
 
 
 

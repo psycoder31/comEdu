@@ -1,5 +1,5 @@
 *.pyc
-db.sqlite3
+comedu/db.sqlite3
 comedu/blog/migrations/
 comedu/comedu_calendar/migrations/
 comedu/polls/migrations/

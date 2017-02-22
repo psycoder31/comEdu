@@ -45,13 +45,10 @@ def post_DV(request, pk):
 
 
 def category_LV(request):
-<<<<<<< HEAD
+
     qs = Category.objects.exclude( name = '공지사항')
     qs2 = Category.objects.get(name ='공지사항')
-=======
-    qs = Category.objects.exclude( name = 'NOTICE')
-    qs2 = Category.objects.get(name ='NOTICE')
->>>>>>> hyunjae
+
     return render(request, 'blog/category_all.html', {'categories' : qs, 'notice' : qs2})
 
 
@@ -67,11 +64,9 @@ def new_post(request, slug=None):
                 newboard = form.save(commit=False)
                 newboard.author = request.user
                 cat = Category.objects.get(name=newboard.category)
-<<<<<<< HEAD
+
                 if cat.slug == '공지사항':
-=======
-                if cat.name == 'NOTICE':
->>>>>>> hyunjae
+
                     if request.user.is_manager == True :
                         newboard.save()
                         return redirect('/blog/%s' % (cat.slug))
@@ -147,11 +142,9 @@ def post_search(request, slug=None):
     if request.GET['category'] == 'au':
         if request.GET['q']:
             q = request.GET['q']
-<<<<<<< HEAD
+
             posts = Post.objects.filter(category=category, author__username__contains = q) 
-=======
-            posts = Post.objects.filter(category=category, author__username__contains = q) #작성자 검사 방법 찾기
->>>>>>> hyunjae
+
             paginator = Paginator(posts, 6)
             page = request.GET.get('page', '1')
             try:

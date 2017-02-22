@@ -1,34 +1,8 @@
 *.pyc
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 82cb9e170c83cc7bf1af106be2713075c3e0d7c8
-db.sqlite3
 comedu/db.sqlite3
-<<<<<<< HEAD
->>>>>>> update .gitignore
-=======
-comedu/db.sqlite3
->>>>>>> hyunjae
-=======
->>>>>>> 82cb9e170c83cc7bf1af106be2713075c3e0d7c8
 comedu/blog/migrations/
 comedu/comedu_calendar/migrations/
 comedu/polls/migrations/
 comedu/customuser/migrations/
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> Modify -gitignore
-=======
-=======
-db.sqlite3
->>>>>>> add ignore files
->>>>>>> ignore
-=======
->>>>>>> hyunjae
-=======
 
->>>>>>> 82cb9e170c83cc7bf1af106be2713075c3e0d7c8
+

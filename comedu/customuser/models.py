@@ -71,7 +71,6 @@ class MyUser(AbstractBaseUser):
         verbose_name="직책(교수, 학생)",
         choices=(('pro', '교수'),('stu', '학생'))
         )
-    is_manager = models.BooleanField(default = False)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_manager = models.BooleanField(default=False)

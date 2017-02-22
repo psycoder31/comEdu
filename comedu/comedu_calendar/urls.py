@@ -12,10 +12,6 @@ urlpatterns = [
     url(r'^new/$', views.calendar_new, name='calendar_new'),
 
     url(r'^(?P<pk>[0-9]+)/edit$', views.calendar_edit, name = 'calendar_edit'),
-<<<<<<< HEAD
-     ##name = 왼쪽 주소
-=======
->>>>>>> 0222 backups
 
     url(r'^(?P<pk>[0-9]+)/delete/$', views.calendar_delete, name = 'calendar_delete'),##뒤에 answer때문에 /생겨서 주소에도 마지막에 /넣어줘야됨
 

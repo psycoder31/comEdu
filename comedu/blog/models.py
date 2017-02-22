@@ -6,24 +6,15 @@ from django.conf import settings
 
 class Category(models.Model):
     name = models.CharField(unique=True, max_length = 100)
-<<<<<<< HEAD
+
     slug = models.SlugField(unique=True, allow_unicode = True)
-=======
-    slug = models.SlugField(unique=True)
->>>>>>> hyunjae
+
     def __str__(self):
         return self.name
 
 class Post(models.Model):
     title = models.CharField('TITLE', max_length=50)
-<<<<<<< HEAD
-=======
-    description = models.CharField(
-        "DESCRIPTION",
-        max_length = 100,
-        blank = True
-        )
->>>>>>> hyunjae
+
     content = models.TextField('CONTENT')
     create_date = models.DateTimeField(
         'CREATE DATE',
@@ -34,11 +25,9 @@ class Post(models.Model):
         )
     category = models.ForeignKey(Category, default = '')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default='')
-<<<<<<< HEAD
 
-=======
-###필드 타입 외 변수들 저장
->>>>>>> hyunjae
+
+
     class Meta:
         verbose_name = 'post'
         verbose_name_plural = 'posts'

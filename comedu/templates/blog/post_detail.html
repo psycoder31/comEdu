@@ -1,7 +1,7 @@
 
 <body>
 
-<h2>{{Post.title}}</h2>
+<h2>{{Post.title}}          <a href = "{% url 'blog:post_list' Cat.slug %}">글 목록으로</a></h2>
 <h3>{{Post.author}}</h3>
 <p class="other_posts">
   {% if Post.get_previous_post_by_modify_date %}

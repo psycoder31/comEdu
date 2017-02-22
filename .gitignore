@@ -1,2 +1,9 @@
 *.pyc
 db.sqlite3
+<<<<<<< HEAD
+=======
+comedu/blog/migrations/
+comedu/comedu_calendar/migrations/
+comedu/polls/migrations/
+comedu/customuser/migrations/
+>>>>>>> Modify -gitignore

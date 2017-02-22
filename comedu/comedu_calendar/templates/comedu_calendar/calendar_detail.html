@@ -3,13 +3,19 @@
 {% block content %}
 
               <div class="calendar">
-                  <h1><a href="">{{ calendar.title }}</a></h1>
-                  <p>{{ calendar.context|linebreaksbr }}</p>
-                  <p>{{ calendar.start|date:"Y년 m월 d일 D h시 i분" }}</p>
-                  <p>{{ calendar.end|date:"Y년 m월 d일 D h시 i분"}}</p>
+                  <h1>{{ calendar.title }}</h1>
+                  <p>{{ calendar.context|safe }}</p>
+                  <p>{{ calendar.start|date:"Y년 m월 d일" }}</p>
+                  <!-- <p>{{ calendar.start_time|date:"h시 i분" }}</p> -->
+                  <p>{{ calendar.end|date:"Y년 m월 d일"}}</p>
+                  <!-- <p>{{ calendar.end_time|date:"h시 i분" }}</p> -->
                   <p>{{ calendar.classify|linebreaksbr }}</p>
+                  <!-- <p>{{ calendar.author}}</p> -->
               </div>
               <a href="{%url 'calendar:calendar_edit' calendar.pk %} ">수정하기</a>
-              <a href="/calendar/{{calendar.pk}}/delete ">삭제하기</a>
+              <a href="{%url 'calendar:calendar_delete_popup' calendar.pk %} ">삭제하기</a>
+
 <!-- /calendar/{{calendar.pk}}/edit 캘린더 앱 안의 calendar_edit이라는 url로 가는데 pk도 같이 가져가-->
 {% endblock content %}
+  <!--  -->
+<!-- <a href="/calendar/{{calendar.pk}}/delete">삭제하기</a> -->

@@ -6,6 +6,15 @@
         <li><h1><a href="{% url 'calendar:cal_detail' pk=calendar.pk %}">{{ calendar.title }}</a></h1></li>
         <h3>{{calendar.start}}</h3>
         {% endfor %}
+        <form action="/calendar/search/" method="get">
+           <select name="category">
+             <option value="ti">TITLE</option>
+             <option value="co">CONTEXT</option>
+             <option value="au">AUTHOR</option>
+           </select>
+           <input type="text" name="q">
+           <input type="submit" value="Search">
+         </form>
     </ul>
 {% else %}
     <p>일정이 없습니다.</p>
@@ -18,5 +27,21 @@
        <input type="submit" value="Search">
      </form>
 {% endif %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if calendars.has_previous %}
+            <a href="?page={{ calendars.previous_page_number }}">이전 페이지</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ calendars.number }} of {{ calendars.paginator.num_pages }}.
+        </span>
+
+        {% if calendars.has_next %}
+            <a href="?page={{ calendars.next_page_number }}">다음 페이지</a>
+        {% endif %}
+    </span>
+</div>
 
 <h3><a href = "/calendar/">홈으로 돌아가기</a></h3>

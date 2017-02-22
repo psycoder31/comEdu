@@ -1,13 +1,22 @@
 *.pyc
 <<<<<<< HEAD
+<<<<<<< HEAD
 db.sqlite3
 <<<<<<< HEAD
 =======
 =======
+=======
+>>>>>>> ignore
 comedu/db.sqlite3
 >>>>>>> update .gitignore
 comedu/blog/migrations/
 comedu/comedu_calendar/migrations/
 comedu/polls/migrations/
 comedu/customuser/migrations/
+<<<<<<< HEAD
 >>>>>>> Modify -gitignore
+=======
+=======
+db.sqlite3
+>>>>>>> add ignore files
+>>>>>>> ignore

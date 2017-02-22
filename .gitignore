@@ -1,7 +1,11 @@
 *.pyc
+<<<<<<< HEAD
 db.sqlite3
 <<<<<<< HEAD
 =======
+=======
+comedu/db.sqlite3
+>>>>>>> update .gitignore
 comedu/blog/migrations/
 comedu/comedu_calendar/migrations/
 comedu/polls/migrations/

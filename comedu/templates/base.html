@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,8 +13,8 @@
 
     <!-- Latest compiled JavaScript 부트스트렙에서 제공하는 자바 스크립트 라이브러리 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static url 'css/main_style.css' %}"/>
-    <script src="{% static url 'js/nab_bar_js.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/main_style.css' %}"/>
+    <script src="{% static 'js/nav_bar_js.js' %}"></script>
     <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
     <title>{% block title %}SKKU - COMEDU{% endblock %}</title>
   </head>
@@ -95,9 +97,40 @@
                 <li><a href="#">투표만들기</a></li>
               </ul>
             </li>
-
-            <li><a href="#">Login</a></li>
-
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="#myModal" data-toggle="modal">Login</a></li>
+                <div id="myModal" class="modal fade">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Login</h4>
+                      </div>
+                      <form action='/' method="post">
+                        {% csrf_token %}
+                        <div class="login_box">
+                          <div class="input_login">
+                            <input type="text" id='username' name='username' placeholder="학번을 입력하세요">
+                          </div>
+                          <div class="input_login">
+                            <input type="password" id='password' name='password' placeholder="비밀번호를 입력하세요">
+                          </div>
+                          <p class="text-warning"><small></small></p>
+                        </div>
+                        {% if form.errors %}
+                        <p>ID나 비밀번호가 일치하지 않습니다.</p>
+                        {% endif %}
+                        <div class="modal-footer">
+                          <input type='submit' class="btn btn-default" value="Login">
+                          <button type="button" class="btn btn-primary">Sign up</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
           </ul>
         </div>
       </nav>
@@ -106,9 +139,31 @@
   </div>
   {% block content %}
   {% endblock %}
-  <div>
-    <br><br><br><br><br>
-    <p style="font-size: 12px;">COPYRIGHT ⓒ 2017 PSYCODER ALL RIGHTS RESERVED.</p>
+  <div class="container-fluid last-sec">
+    <footer>
+      <div class="row">
+        <div class="col-sm-3">
+          <p>section1</p>
+        </div>
+        <div class="col-sm-3">
+          <p>section2</p>
+        </div>
+        <div class="col-sm-3">
+          <p>section3</p>
+        </div>
+        <div class="col-sm-3">
+          <p>section4</p>
+        </div>
+      <div class="column">
+        <div>
+          <br><br><br><br><br>
+          <p style="font-size: 12px;">COPYRIGHT ⓒ 2017 PSYCODER ALL RIGHTS RESERVED.</p>
+        </div>
+
+      </div>
+
+    </footer>
+
   </div>
 </body>
 </html>

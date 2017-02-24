@@ -24,9 +24,6 @@ from customuser.views import mainView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^login/', auth_views.login, name='login',kwargs={
-        'template_name': 'login.html',
-        }),
     url(r'^logout/', auth_views.logout, name='logout', kwargs={
         'next_page': '/'
         }),

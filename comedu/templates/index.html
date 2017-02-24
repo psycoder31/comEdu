@@ -1,6 +1,7 @@
-{% extands 'base.html' %}
+{% extends 'base.html' %}
+{% load static %}
 
-{% block body %}
+{% block content %}
 
 <div class="container-fluid first-sec">
     <section id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -13,7 +14,7 @@
   <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item">
-        <img src="main_image1.jpg">
+        <img src="{% static 'image/main_image1.jpg' %}">
         <div class="carousel-caption">
           <h2> SungKyunKwan University</h2>
           <p> Global Leading University </p>
@@ -21,7 +22,7 @@
       </div>
 
       <div class="item active">
-        <img src="main_image2.jpg">
+        <img src="{% static 'image/main_image2.jpg' %}">
         <div class="carousel-caption">
           <h2> Department of Computer Education </h2>
           <p> Be Creative, Be innovative </p>
@@ -43,64 +44,13 @@
 
 <div class="container-fluid second-sec">
   <section>
-
-    <div class="card">
-
-     <main id="main">
-      <h2>SHIN'S GALLERY</h2>
-      <br><br>
-       <section class="thumbnails">
-
-         <div class="a col-sm-4">
-           <a href="#">
-           <img id="ssum" src="main_image1.jpg">
-           <h3>section1-1</h3>
-           </a>
-           <br>
-           <a href="#">
-           <img id="ssum" src="main_image1.jpg">
-           <h3>section1-2</h3>
-           </a>
-         </div>
-
-         <div class="b col-sm-4">
-           <a href="#">
-           <img id="ssum" src="main_image2.jpg">
-           <h3>section2-1</h3>
-           </a>
-           <br>
-           <a href="#">
-           <img id="ssum" src="main_image2.jpg">
-           <h3>section2-2</h3>
-           </a>
-         </div>
-
-         <div class="c col-sm-4">
-           <a href="#">
-           <img id="ssum" src="main_image1.jpg">
-           <h3>section3-1</h3>
-           </a>
-           <br>
-           <a href="#">
-           <img id="ssum" src="main_image1.jpg">
-           <h3>section3-2</h3>
-           </a>
-         </div>
-
-     </section>
-   </main>
-  </section>
-
-</div>
-<div class="container-fluid third-sec">
-  <section>
     <h2>Introduction to Computer Education</h2>
     <br><br>
     <div class="wrapper col-sm-4">
 <div class="tile job-bucket">
 <div class="front">
   <div class="contents">
-    <img src="main_image1.jpg"/>
+    <img src="{% static 'image/main_image2.jpg' %}"/>
     <h3>subject</h3>
     <p>contents</p>
     <br>
@@ -120,7 +70,7 @@
 <div class="tile job-bucket">
 <div class="front">
   <div class="contents">
-    <img src="main_image2.jpg"/>
+    <img src="{% static 'image/main_image2.jpg' %}"/>
     <h3>subject</h3>
     <p>content</p>
     <br>
@@ -140,7 +90,7 @@
 <div class="tile job-bucket">
 <div class="front">
   <div class="contents">
-    <img src="main_image1.jpg"/>
+    <img src="{% static 'image/main_image1.jpg' %}"/>
     <h3>subject</h3>
     <p>content</p>
     <br>
@@ -161,27 +111,59 @@
 <div id="blank_space" class="container-fluid">
 
 </div>
-<div class="container-fluid last-sec">
-  <footer>
-    <div class="row">
-      <div class="col-sm-3">
-        <p>section1</p>
-      </div>
-      <div class="col-sm-3">
-        <p>section2</p>
-      </div>
-      <div class="col-sm-3">
-        <p>section3</p>
-      </div>
-      <div class="col-sm-3">
-        <p>section4</p>
-      </div>
-    <div class="column">
 
 
-    </div>
+<div class="container-fluid third-sec">
+  <section>
 
-  </footer>
+    <div class="card">
+
+     <main id="main">
+      <h2>SHIN'S GALLERY</h2>
+      <br><br>
+       <section class="thumbnails">
+
+         <div class="a col-sm-4">
+           <a href="#">
+         <img id="ssum" src="{% static 'image/main_image1.jpg' %}">
+           <h3>section1-1</h3>
+           </a>
+           <br>
+           <a href="#">
+         <img id="ssum" src="{% static 'image/main_image1.jpg' %}">
+           <h3>section1-2</h3>
+           </a>
+         </div>
+
+         <div class="b col-sm-4">
+           <a href="#">
+         <img id="ssum" src="{% static 'image/main_image2.jpg' %}">
+           <h3>section2-1</h3>
+           </a>
+           <br>
+           <a href="#">
+         <img id="ssum" src="{% static 'image/main_image2.jpg' %}">
+           <h3>section2-2</h3>
+           </a>
+         </div>
+
+         <div class="c col-sm-4">
+           <a href="#">
+         <img id="ssum" src="{% static 'image/main_image1.jpg' %}">
+           <h3>section3-1</h3>
+           </a>
+           <br>
+           <a href="#">
+         <img id="ssum" src="{% static 'image/main_image1.jpg' %}">
+           <h3>section3-2</h3>
+           </a>
+         </div>
+
+     </section>
+   </main>
+  </section>
 
 </div>
+
+
 {% endblock %}

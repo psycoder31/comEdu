@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library 부트스트렙 에서 사용하는 jQuery, 이 라이브러리를 부트 스트렙 라이브러리 보다 먼저 사용하여야 한다.-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript 부트스트렙에서 제공하는 자바 스크립트 라이브러리 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static url 'css/main_style.css' %}"/>
+    <script src="{% static url 'js/nab_bar_js.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
+    <title>{% block title %}SKKU - COMEDU{% endblock %}</title>
+  </head>
+  <body>
+    <div id="nav_space" class="container-fluid">
+    <div class="top-nav">
+      <nav id="header" class="navbar navbar-inverse navbar-fixed-top">
+        <div id="header-container" class="navbar-container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" name="button">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">ComEdu</a>
+        </div>
+
+        <div id="myNavbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+
+            <li class="dropdown topmenu">
+              <a class="dropdown-toggle" data-toggle="dropdown">Intro
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">과 소개</a></li>
+                <li><a href="#">연혁</a></li>
+                <li><a href="#">교수님 소개</a></li>
+                <li><a href="#">오시는 길</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown topmenu">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Activity
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">일정</a></li>
+                <li><a href="#">소모임/집행부</a></li>
+                <li><a href="#">갤러리</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown topmenu">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Notice
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">학과공지</a></li>
+                <li><a href="#">확대운영회의</a></li>
+                <li><a href="#">과 소식</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown topmenu">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Board
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">자유게시판</a></li>
+                <li><a href="#">홍보게시판</a></li>
+                <li><a href="#">정보게시판</a></li>
+                <li><a href="#">작품전시</a></li>
+                <li><a href="#">건의사항</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown topmenu">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Job
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">채용공고</a></li>
+                <li><a href="#">취업후기</a></li>
+                <li><a href="#">임용고사후기</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown topmenu">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Utility
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">학점이수진단</a></li>
+                <li><a href="#">철야신청 조회</a></li>
+                <li><a href="#">투표만들기</a></li>
+              </ul>
+            </li>
+
+            <li><a href="#">Login</a></li>
+
+          </ul>
+        </div>
+      </nav>
+    </div>
+    </div>
+  </div>
+  {% block content %}
+  {% endblock %}
+  <div>
+    <br><br><br><br><br>
+    <p style="font-size: 12px;">COPYRIGHT ⓒ 2017 PSYCODER ALL RIGHTS RESERVED.</p>
+  </div>
+</body>
+</html>

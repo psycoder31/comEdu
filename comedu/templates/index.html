@@ -1,84 +1,187 @@
-<!DOCTYPE html>
-<html>
-<haed>
-    <title>main page</title>
-    <meta charset="utf-8">
-<!--    디바이스의 환경에 맞게 view를 조절하는 것이 viewport  -->
-    <meta name="viewport" content="width=device-width, initial-sacle=1">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{% extands 'base.html' %}
 
-    <!-- jQuery library 부트스트렙 에서 사용하는 jQuery, 이 라이브러리를 부트 스트렙 라이브러리 보다 먼저 사용하여야 한다.-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+{% block body %}
 
-    <!-- Latest compiled JavaScript 부트스트렙에서 제공하는 자바 스크립트 라이브러리 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        body{
-            background: orange;
-        }
+<div class="container-fluid first-sec">
+    <section id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      </ol>
 
-        .navbar-inverse{
-            background: #ea8425;
-            border: none;
-        }
-
-        .navbar-inverse .navbar-brand{
-          color: white;
-          font-size: 25px;
-        }
-        .navbar-inverse .navbar-brand:hover{
-          color: grey;
-        }
-
-        .navbar-inverse .navbar-nav > li > a{
-            color: white;
-        }
-        .navbar-inverse .navbar-nav > li > a:hover{
-          color: grey;
-          background: white;
-        }
-
-    </style>
-</haed>
-<body>
-   <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-       <div class="navbar-header">
-        <a class="navbar-brand" href="#">COMEDU</a>
+  <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item">
+        <img src="main_image1.jpg">
+        <div class="carousel-caption">
+          <h2> SungKyunKwan University</h2>
+          <p> Global Leading University </p>
         </div>
+      </div>
 
-       <ul class="nav navbar-nav navbar-right">
-            <li><a class="ad" href="">게시판</a></li>
-            <li><a href="">유틸리티</a></li>
-            <li><a href="/login/">로그인</a></li>
-            <li><a href="/logout/">로그아웃</a></li>
-       </ul>
+      <div class="item active">
+        <img src="main_image2.jpg">
+        <div class="carousel-caption">
+          <h2> Department of Computer Education </h2>
+          <p> Be Creative, Be innovative </p>
+        </div>
+      </div>
     </div>
-    </nav>
 
-    <div class="container" style="margin-top: 10em;">
-      <div class="jumbotron">
-        <h1>welcome {{user.username}}</h1>
-        <p><strong>학번</strong> : {{user.student_id}}</p>
-        <p><strong>e-mail</strong> : {{user.email}}</p>
+  <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+  </section>
+</div>
+
+<div class="container-fluid second-sec">
+  <section>
+
+    <div class="card">
+
+     <main id="main">
+      <h2>SHIN'S GALLERY</h2>
+      <br><br>
+       <section class="thumbnails">
+
+         <div class="a col-sm-4">
+           <a href="#">
+           <img id="ssum" src="main_image1.jpg">
+           <h3>section1-1</h3>
+           </a>
+           <br>
+           <a href="#">
+           <img id="ssum" src="main_image1.jpg">
+           <h3>section1-2</h3>
+           </a>
+         </div>
+
+         <div class="b col-sm-4">
+           <a href="#">
+           <img id="ssum" src="main_image2.jpg">
+           <h3>section2-1</h3>
+           </a>
+           <br>
+           <a href="#">
+           <img id="ssum" src="main_image2.jpg">
+           <h3>section2-2</h3>
+           </a>
+         </div>
+
+         <div class="c col-sm-4">
+           <a href="#">
+           <img id="ssum" src="main_image1.jpg">
+           <h3>section3-1</h3>
+           </a>
+           <br>
+           <a href="#">
+           <img id="ssum" src="main_image1.jpg">
+           <h3>section3-2</h3>
+           </a>
+         </div>
+
+     </section>
+   </main>
+  </section>
+
+</div>
+<div class="container-fluid third-sec">
+  <section>
+    <h2>Introduction to Computer Education</h2>
+    <br><br>
+    <div class="wrapper col-sm-4">
+<div class="tile job-bucket">
+<div class="front">
+  <div class="contents">
+    <img src="main_image1.jpg"/>
+    <h3>subject</h3>
+    <p>contents</p>
+    <br>
+    <a href="#">View</a>
+  </div>
+</div>
+<div class="back first">
+  <h3>title</h3>
+  <a id="b_f" href="#">detail1</a>
+  <a id="b_f" href="#">detail2</a>
+  <a id="b_f" href="#">detail3</a>
+  <a id="b_f" href="#">View All</a>
+</div>
+</div>
+</div>
+<div class="wrapper col-sm-4">
+<div class="tile job-bucket">
+<div class="front">
+  <div class="contents">
+    <img src="main_image2.jpg"/>
+    <h3>subject</h3>
+    <p>content</p>
+    <br>
+    <a href="#">View</a>
+  </div>
+</div>
+<div class="back second">
+  <h3>title</h3>
+  <a id="b_s" href="#">detail1</a>
+  <a id="b_s" href="#">detail2</a>
+  <a id="b_s" href="#">detail3</a>
+  <a id="b_s" href="#">View All</a>
+</div>
+</div>
+</div>
+<div class="wrapper col-sm-4">
+<div class="tile job-bucket">
+<div class="front">
+  <div class="contents">
+    <img src="main_image1.jpg"/>
+    <h3>subject</h3>
+    <p>content</p>
+    <br>
+    <a href="#">View</a>
+  </div>
+</div>
+<div class="back third">
+  <h3>title</h3>
+  <a id="b_t" href="#">detail1</a>
+  <a id="b_t" href="#">detail2</a>
+  <a id="b_t" href="#">detail3</a>
+  <a id="b_t" href="#">View All</a>
+</div>
+</div>
+</div>
+  </section>
+</div>
+<div id="blank_space" class="container-fluid">
+
+</div>
+<div class="container-fluid last-sec">
+  <footer>
+    <div class="row">
+      <div class="col-sm-3">
+        <p>section1</p>
       </div>
-      <div class="jumbotron">
-        <h1>test page</h1>
+      <div class="col-sm-3">
+        <p>section2</p>
       </div>
-      <div class="jumbotron">
-        <h1>test page</h1>
+      <div class="col-sm-3">
+        <p>section3</p>
       </div>
-      <div class="jumbotron">
-        <h1>test page</h1>
+      <div class="col-sm-3">
+        <p>section4</p>
       </div>
-      <div class="jumbotron">
-        <h1>test page</h1>
-      </div>
-      <div class="jumbotron">
-        <h1>test page</h1>
-      </div>
+    <div class="column">
+
 
     </div>
-</body>
-</html>
+
+  </footer>
+
+</div>
+{% endblock %}

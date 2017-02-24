@@ -12,25 +12,31 @@
     <!-- Latest compiled JavaScript 부트스트렙에서 제공하는 자바 스크립트 라이브러리 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="main_style.css"/>
+    <script src="nav_bar_js.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
+
     <title>SKKU - COMEDU</title>
+
   </head>
   <body>
+    <div id="nav_space" class="container-fluid">
     <div class="top-nav">
-      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <nav id="header" class="navbar navbar-inverse navbar-fixed-top">
+        <div id="header-container" class="navbar-container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" name="button">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">COMEDU</a>
+          <a class="navbar-brand" href="#">ComEdu</a>
         </div>
 
-        <div class="collapse navbar-collapse" id="myNavbar">
+        <div id="myNavbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
 
             <li class="dropdown topmenu">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Intro
+              <a class="dropdown-toggle" data-toggle="dropdown">Intro
               <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">과 소개</a></li>
@@ -92,12 +98,30 @@
               </ul>
             </li>
 
-            <li><a href="#">Sign up</a></li>
-            <li><a href="#">Log in</a></li>
+            <li><a href="#myModal" data-toggle="modal">Login</a></li>
+                <div id="myModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Login</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p></p>
+                                <p class="text-warning"><small></small></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Sign up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
           </ul>
         </div>
       </nav>
+    </div>
     </div>
 
     <div class="container-fluid first-sec">
@@ -110,19 +134,19 @@
 
       <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-          <div class="item active">
+          <div class="item">
             <img src="main_image1.jpg">
             <div class="carousel-caption">
-              <h2>창 조</h2>
-              <p>컴퓨터교육을 통해 새로운 창조를 꿈꿉니다.</p>
+              <h2> SungKyunKwan University</h2>
+              <p> Global Leading University </p>
             </div>
           </div>
 
-          <div class="item">
+          <div class="item active">
             <img src="main_image2.jpg">
             <div class="carousel-caption">
-              <h2>혁 신</h2>
-              <p>컴퓨터교육을 통해 새로운 혁신을 꿈꿉니다.</p>
+              <h2> Department of Computer Education </h2>
+              <p> Be Creative, Be innovative </p>
             </div>
           </div>
         </div>
@@ -141,15 +165,151 @@
 
     <div class="container-fluid second-sec">
       <section>
-        <h1>practice2</h1>
+
+        <div class="card">
+
+         <main id="main">
+          <h2>SHIN'S GALLERY</h2>
+          <br><br>
+           <section class="thumbnails">
+
+             <div class="a col-sm-4">
+               <a href="#">
+               <img id="ssum" src="main_image1.jpg">
+               <h3>section1-1</h3>
+               </a>
+               <br>
+               <a href="#">
+               <img id="ssum" src="main_image1.jpg">
+               <h3>section1-2</h3>
+               </a>
+             </div>
+
+             <div class="b col-sm-4">
+               <a href="#">
+               <img id="ssum" src="main_image2.jpg">
+               <h3>section2-1</h3>
+               </a>
+               <br>
+               <a href="#">
+               <img id="ssum" src="main_image2.jpg">
+               <h3>section2-2</h3>
+               </a>
+             </div>
+
+             <div class="c col-sm-4">
+               <a href="#">
+               <img id="ssum" src="main_image1.jpg">
+               <h3>section3-1</h3>
+               </a>
+               <br>
+               <a href="#">
+               <img id="ssum" src="main_image1.jpg">
+               <h3>section3-2</h3>
+               </a>
+             </div>
+
+         </section>
+       </main>
       </section>
 
     </div>
     <div class="container-fluid third-sec">
       <section>
-        <h1>practice3</h1>
+        <h2>Introduction to Computer Education</h2>
+        <br><br>
+        <div class="wrapper col-sm-4">
+  <div class="tile job-bucket">
+    <div class="front">
+      <div class="contents">
+        <img src="main_image1.jpg"/>
+        <h3>subject</h3>
+        <p>contents</p>
+        <br>
+        <a href="#">View</a>
+      </div>
+    </div>
+    <div class="back first">
+      <h3>title</h3>
+      <a id="b_f" href="#">detail1</a>
+      <a id="b_f" href="#">detail2</a>
+      <a id="b_f" href="#">detail3</a>
+      <a id="b_f" href="#">View All</a>
+    </div>
+  </div>
+</div>
+  <div class="wrapper col-sm-4">
+  <div class="tile job-bucket">
+    <div class="front">
+      <div class="contents">
+        <img src="main_image2.jpg"/>
+        <h3>subject</h3>
+        <p>content</p>
+        <br>
+        <a href="#">View</a>
+      </div>
+    </div>
+    <div class="back second">
+      <h3>title</h3>
+      <a id="b_s" href="#">detail1</a>
+      <a id="b_s" href="#">detail2</a>
+      <a id="b_s" href="#">detail3</a>
+      <a id="b_s" href="#">View All</a>
+    </div>
+  </div>
+</div>
+<div class="wrapper col-sm-4">
+  <div class="tile job-bucket">
+    <div class="front">
+      <div class="contents">
+        <img src="main_image1.jpg"/>
+        <h3>subject</h3>
+        <p>content</p>
+        <br>
+        <a href="#">View</a>
+      </div>
+    </div>
+    <div class="back third">
+      <h3>title</h3>
+      <a id="b_t" href="#">detail1</a>
+      <a id="b_t" href="#">detail2</a>
+      <a id="b_t" href="#">detail3</a>
+      <a id="b_t" href="#">View All</a>
+    </div>
+  </div>
+</div>
       </section>
     </div>
+    <div id="blank_space" class="container-fluid">
+
+    </div>
+    <div class="container-fluid last-sec">
+      <footer>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>section1</p>
+          </div>
+          <div class="col-sm-3">
+            <p>section2</p>
+          </div>
+          <div class="col-sm-3">
+            <p>section3</p>
+          </div>
+          <div class="col-sm-3">
+            <p>section4</p>
+          </div>
+        <div class="column">
+          <div>
+            <br><br><br><br><br>
+            <p style="font-size: 12px;">COPYRIGHT ⓒ 2017 PSYCODER ALL RIGHTS RESERVED.</p>
+          </div>
+
+        </div>
+
+      </footer>
+
+    </div>
+
 
   </body>
 </html>

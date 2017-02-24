@@ -3,8 +3,52 @@
   <head>
     <meta charset="utf-8">
     <title>회원가입</title>
+
     <link rel="stylesheet" href="style.css"/>
     <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
+    <script type="text/javascript">
+    function valid(x){
+      var alphaDigit= "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+      if (x.pass1.value=="") {
+    alert("비밀번호를 입력하셔야 합니다.")
+    x.pass1.focus();
+    return;
+    }
+    if (x.pass1.value.length < 4) {
+    alert("비밀번호는 4자리 이상 입력하셔야 합니다.");
+    x.pass1.value="";
+    x.pass1.focus();
+    return;
+    }
+    if (x.pass2.value==""){
+    alert("비밀번호를 확인 입력해 주셔야 합니다.")
+    x.pass2.focus();
+    return;
+    }
+    if (x.pass1.value != x.pass2.value) {
+    alert("비밀번호가 서로 일치하지 않습니다.");
+    x.pass1.value=x.pass2.value="";
+    x.pass1.focus();
+    return;
+    }
+    if (x.pass1.value.indexOf(" ") >= 0) {
+    alert("비밀번호에는 공백이 들어가면 안됩니다.");
+    x.pass1.value=x.pass2.value="";
+    x.pass1.focus();
+    return;
+    }
+    for (i=0; i<x.pass1.value.length; i++) {
+      if (alphaDigit.indexOf(x.pass1.value.substring(i, i+1)) < 0) {
+      alert("비밀번호는 영문과 숫자의 조합만 사용할 수 있습니다.");
+      x.pass1.value=x.pass2.value="";
+      x.pass1.focus();
+      return;
+      }
+    }
+    alert("잘 입력하셨습니다.")
+    }
+     }
+    </script>
   </head>
 
   <body>
@@ -17,12 +61,15 @@
             <div class="student_code">
               <input type="text" placeholder="학번">
             </div>
-            <div class="password">
+            <div class="password" id="pass1">
               <input type="password" placeholder="비밀번호">
             </div>
-            <div class="passCheck">
-
+            <div class="passCheck"id="pass2">
+              <input type="password" placeholder="비밀번호확인">
             </div>
+            <td colspan="2" align="right">
+              <input type="button" value="체크" onclick="valid(this.form)">
+            </td>
           </div>
           <div class="second_box">
             <div class="name">

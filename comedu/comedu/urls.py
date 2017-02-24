@@ -30,20 +30,16 @@ urlpatterns = [
     url(r'^logout/', auth_views.logout, name='logout', kwargs={
         'next_page': '/'
         }),
-
     ##add for calendar
     url(r'^calendar/', include('comedu_calendar.urls', namespace = 'calendar')),
-    # url(r'^search/$', calendar_search),
 
     url(r'^blog/', include('blog.urls')),
-
+    url(r'^summernote/', include('django_summernote.urls')),
 
     # polls app url
     url(r'^polls/', include('polls.urls')),
-
     # main page
     url(r'^$', mainView, name='home'),
-
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

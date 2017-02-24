@@ -1,0 +1,9 @@
+<form action="" method="POST">
+  {% csrf_token %}
+  <table>
+
+    {{form|safe}}
+
+  </table>
+  <input type = "submit" value="수정완료"/>
+</form>

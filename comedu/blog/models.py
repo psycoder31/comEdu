@@ -1,24 +1,33 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.utils import timezone
+from django.conf import settings
+
+
+class Category(models.Model):
+    name = models.CharField(unique=True, max_length = 100)
+
+    slug = models.SlugField(unique=True, allow_unicode = True)
+
+    def __str__(self):
+        return self.name
 
 class Post(models.Model):
-    title = models.CharField('TITLE',unique=True, max_length=50)
-    description = models.CharField(
-    "DESCRIPTION",
-    max_length = 100,
-    blank = True
-    )
+    title = models.CharField('TITLE', max_length=50)
+
     content = models.TextField('CONTENT')
     create_date = models.DateTimeField(
         'CREATE DATE',
         auto_now_add = True
-    )
+        )
     modify_date = models.DateTimeField(
         'MODIFY DATE', auto_now = True
-    )
-    photo = models.ImageField(blank = True, null = True)
-###필드 타입 외 변수들 저장
+        )
+    category = models.ForeignKey(Category, default = '')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, default='')
+
+
+
     class Meta:
         verbose_name = 'post'
         verbose_name_plural = 'posts'
@@ -40,7 +49,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post)
-    author = models.CharField(max_length = 10)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, default = '')
     message = models.TextField()
     create_date = models.DateTimeField(auto_now_add = True)
     modify_date = models.DateTimeField(auto_now = True)

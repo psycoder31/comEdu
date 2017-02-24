@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Re Schedule</h1>
     <form method="POST" class="calendar-form">{% csrf_token %}
-        {{form.as_p}}
+        {{form.as_p|safe}}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 

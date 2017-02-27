@@ -7,8 +7,8 @@ from django import forms
 
 from django.contrib.auth.models import User
 
-from .forms import CommentForm, PostForm
-from .models import Post, Comment, Category
+from .forms import CommentForm, PostForm, AlbumForm
+from .models import Post, Comment, Category, AlbumPost
 
 
 def post_LV(request, slug):
@@ -23,7 +23,7 @@ def post_LV(request, slug):
         results = paginator.page(1)
     except EmptyPage:
         results = paginator.page(paginator.num_pages)
-    return render(request, template_name, {'posts' : results, 'index' : category, 'slug':slug,})
+    return render_to_response(template_name, {'posts' : results, 'index' : category, 'slug':slug,})
 
 
 def post_DV(request, pk):
@@ -143,7 +143,7 @@ def post_search(request, slug=None):
         if request.GET['q']:
             q = request.GET['q']
 
-            posts = Post.objects.filter(category=category, author__username__contains = q) 
+            posts = Post.objects.filter(category=category, author__username__contains = q)
 
             paginator = Paginator(posts, 6)
             page = request.GET.get('page', '1')
@@ -160,3 +160,37 @@ def post_search(request, slug=None):
 
 def not_admin(request):
     return render_to_response('blog/not_admin.html', )
+
+
+def album_LV(request):
+    qs = AlbumPost.objects.all()
+    template_name = 'blog/album_all.html'
+    paginator = Paginator(qs, 6)
+    page = request.GET.get('page', '1')
+    try:
+        results = paginator.page(page)
+    except PageNotAnInteger:
+        results = paginator.page(1)
+    except EmptyPage:
+        results = paginator.page(paginator.num_pages)
+    return render_to_response( template_name, {'albums' : results})
+
+
+def new_album(request):
+    if not request.user.is_authenticated:
+        return render_to_response('blog/not_admin.html',)
+    else:
+        form = AlbumForm()
+        if request.method == "POST":
+            form = AlbumForm(request.POST, request.FILES)
+            # form.is_bound = True
+            # form.data = request.POST
+            # form.files = request.FILES
+            if form.is_valid():
+                newboard = form.save(commit=False)
+                newboard.author = request.user
+                newboard.save()
+                return redirect('/blog/album')
+            else :
+                return redirect('/blog/album')
+        return render(request, 'blog/new_album.html', {'form': form})

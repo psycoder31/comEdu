@@ -46,7 +46,7 @@ class Post(models.Model):
 
 class AlbumPost(models.Model):
     title = models.CharField('TITLE', max_length=50)
-    content = models.TextField('CONTENT')
+    content = models.TextField('CONTENT', null = True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default='')
     create_date = models.DateTimeField(
         'CREATE DATE',
@@ -66,7 +66,8 @@ class AlbumPost(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post, default = '', null = True, blank = True)
+    album = models.ForeignKey(AlbumPost, default = '', null = True, blank = True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default = '')
     message = models.TextField()
     create_date = models.DateTimeField(auto_now_add = True)

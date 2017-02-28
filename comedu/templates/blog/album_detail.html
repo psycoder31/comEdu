@@ -1,0 +1,37 @@
+
+<body>
+
+<h2>{{Album.title}}          <a href = "{% url 'blog:album_list' %}">글 목록으로</a></h2>
+<h3>{{Album.author}}</h3>
+
+<p class="date">{{ Album.modify_date|date:"Y/F/j일, H:i" }}</p>
+<br/>
+
+<div class="body">
+    {{ Album.content|safe }}
+    {% if Album.photo %}
+      <img src = "{{ Album.photo.url }}" />
+    {% endif %}
+</div>
+
+<h5> Comments </h5>
+<ul>
+  {% for comment in Album.comment_set.all %}
+    <li>
+      {{ comment.message|safe}}
+      <small>by {{ comment.author}},  {{comment.create_date}} </small>
+    </li>
+  {% endfor %}
+</ul>
+
+<form action="" method="POST">
+  {% csrf_token %}
+    <input name ='message'>
+  <button type = "submit" > 댓글작성 </button>
+</form>
+
+<br>
+<a href = "{% url 'blog:album_edit' pk=Album.pk %}">수정하기</a>
+<a href = "{% url 'blog:album_delete' pk=Album.pk %}">삭제하기</a>
+
+</body>

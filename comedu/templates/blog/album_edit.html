@@ -1,0 +1,7 @@
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <table>
+    {{form|safe}}
+  </table>
+  <input type = "submit" value="수정하기"/>
+</form>

@@ -55,8 +55,6 @@ def category_LV(request):
 def new_post(request, slug=None):
     if not request.user.is_authenticated:
         return render_to_response('blog/not_admin.html',)
-    # elif slug == 'notice' and request.user.is_manager == False:
-    #     return render_to_response('blog/not_admin.html',)
     else:
         if request.method == "POST":
             form = PostForm(request.POST)
@@ -64,9 +62,7 @@ def new_post(request, slug=None):
                 newboard = form.save(commit=False)
                 newboard.author = request.user
                 cat = Category.objects.get(name=newboard.category)
-
                 if cat.slug == '공지사항':
-
                     if request.user.is_manager == True :
                         newboard.save()
                         return redirect('/blog/%s' % (cat.slug))
@@ -142,9 +138,7 @@ def post_search(request, slug=None):
     if request.GET['category'] == 'au':
         if request.GET['q']:
             q = request.GET['q']
-
             posts = Post.objects.filter(category=category, author__username__contains = q)
-
             paginator = Paginator(posts, 6)
             page = request.GET.get('page', '1')
             try:
@@ -183,9 +177,6 @@ def new_album(request):
         form = AlbumForm()
         if request.method == "POST":
             form = AlbumForm(request.POST, request.FILES)
-            # form.is_bound = True
-            # form.data = request.POST
-            # form.files = request.FILES
             if form.is_valid():
                 newboard = form.save(commit=False)
                 newboard.author = request.user
@@ -194,3 +185,108 @@ def new_album(request):
             else :
                 return redirect('/blog/album')
         return render(request, 'blog/new_album.html', {'form': form})
+
+def album_DV(request, pk ):
+    qs = AlbumPost.objects.get(pk=pk)
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            form = CommentForm(request.POST, request.FILES)
+            if form.is_valid():
+                comment = form.save(commit = False)
+                comment.album = AlbumPost.objects.get(pk=pk)
+                comment.author = request.user
+                comment.save()
+                return redirect('/blog/album/%s' % (pk))
+        else:
+            return redirect ('/blog/not_admin')
+    form = CommentForm()
+    return render(request, 'blog/album_detail.html', {'form' : form, 'Album':qs})
+
+
+def album_edit(request, pk=None):
+    if pk :
+        album = get_object_or_404(AlbumPost, id=pk)
+    else :
+        return HttpResponseForbidden()
+    form = AlbumForm(request.POST, request.FILES or None, instance = album)
+    if request.POST and form.is_valid():
+        form.modify_date = forms.DateTimeField(timezone.now())
+        form.author = request.user
+        form.save()
+        return redirect('/blog/album/%s' % (pk))
+    if request.user == album.author or request.user.is_manager == True :
+        return render(request, 'blog/album_edit.html', {'form' : form})
+    else :
+        return redirect ('/blog/not_admin')
+
+
+def album_delete(request, pk=None):
+    qs = AlbumPost.objects.get(pk=pk)
+    if request.user == qs.author or request.user.is_manager == True :
+        AlbumPost(pk=pk).delete()
+        return redirect('/blog/album/')
+    else :
+        return redirect ('/blog/not_admin')
+
+
+def album_search(request):
+    if request.GET['category'] == 'ti':
+        if request.GET['q']:
+            q = request.GET['q']
+            albums = AlbumPost.objects.filter(title__icontains = q)
+            paginator = Paginator(albums, 6)
+            page = request.GET.get('page', '1')
+            try:
+                results = paginator.page(page)
+            except PageNotAnInteger:
+                results = paginator.page(1)
+            except EmptyPage:
+                results = paginator.page(paginator.num_pages)
+            return render_to_response('blog/album_all.html', {'albums':results, 'search':q})
+        else:
+            return render_to_response('blog/album_all.html', {'error':True })
+    if request.GET['category'] == 'co':
+        if request.GET['q']:
+            q = request.GET['q']
+            albums = AlbumPost.objects.filter(content__icontains = q)
+            paginator = Paginator(albums, 6)
+            page = request.GET.get('page', '1')
+            try:
+                results = paginator.page(page)
+            except PageNotAnInteger:
+                results = paginator.page(1)
+            except EmptyPage:
+                results = paginator.page(paginator.num_pages)
+            return render_to_response('blog/album_all.html', {'albums':results, 'search':q})
+        else:
+            return render_to_response('blog/album_all.html', {'error':True })
+    if request.GET['category'] == 'au':
+        if request.GET['q']:
+            q = request.GET['q']
+            albums = AlbumPost.objects.filter(author__username__contains = q)
+            paginator = Paginator(albums, 6)
+            page = request.GET.get('page', '1')
+            try:
+                results = paginator.page(page)
+            except PageNotAnInteger:
+                results = paginator.page(1)
+            except EmptyPage:
+                results = paginator.page(paginator.num_pages)
+            return render_to_response('blog/album_all.html', {'albums':results, 'search':q})
+        else:
+            return render_to_response('blog/album_all.html', {'error':True })
+
+
+# def album_commentedit(request, album_pk, pk):
+#     comment = Comment.objects.get(pk=album_pk)
+#     qs = AlbumPost.objects.get(pk=pk)
+#     if request.method == 'POST':
+#         form = AlbumForm(request.POST, request.FILES or None, instance = comment)
+#         if form.is_valid():
+#             comment = form.save(commit = False)
+#             comment.album = AlbumPost.objects.get(pk = pk)
+#             comment.save()
+#             return redirect('/blog/album/%s' % (pk))
+#     else:
+#         form = CommentForm(instance = comment)
+#     return render(request, 'blog/album_detail.html', {'form' : form, 'Album':qs})

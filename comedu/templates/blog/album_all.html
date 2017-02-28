@@ -1,16 +1,53 @@
+<head>
+  <style>
+   body{
+     background-color: skyblue;
+   }
+   #title{
+     text-align: left;
+   }
+   .content{
+     text-align: left;
+     background-color: white;
+     max-width: 70%;
+     margin: 20px auto;#컨텐트랑 밖에 있는 거 여백
+     padding: 10px;#안쪽 여백
+     position :
+   }
+  </style>
+</head>
+
 <h1 > 앨범 게시판</h1>
 <h2> <a href = "{% url 'blog:index' %}"> 게시판 목록으로 </a></h2>
-<h3> <a href = "{% url 'blog:new_album'  %}"> 글 작성하기</a> </h3>
+
+{% if search %}
+  <h2> 검색내용 : {{search}} </h2>
+{% endif %}
+
+{% if error %}
+  <h2> 검색 결과가 없습니다.</h2>
+{% endif %}
 
 {% for album in albums %}
-  <h2>{{ album.title }}</h2>
+  <h3><a href="{% url 'blog:album_detail' album.pk %}">{{ album.title }}</a></h3>
   {{ album.modify_date|date:"M/d일/Y년 H:i" }}      글쓴이 : {{ album.author}}
-
   {% if album.photo %}
     <img src = "{{ album.photo.url }}" />
   {% endif %}
-
 {% endfor %}<br>
+
+
+<form action="/blog/album/search/" method="get">
+   <select name="category">
+     <option value="ti">TITLE</option>
+     <option value="co">CONTEXT</option>
+     <option value="au">AUTHOR</option>
+   </select>
+   <input type="text" name="q">
+   <input type="submit" value="Search">
+</form>
+
+<h3> <a href = "{% url 'blog:new_album'  %}"> 글 작성하기</a> </h3>
 
 <div class="pagination">
     <span class="step-links">

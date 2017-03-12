@@ -29,6 +29,8 @@
     <li>
       {{ comment.message|safe}}
       <small>by {{ comment.author}},  {{comment.create_date}} </small>
+      <a href = "{% url 'blog:post_comment_delete' pk=Post.pk comment_pk=comment.pk %}">삭제하기</a>
+      <a href = "{% url 'blog:post_comment_edit' pk=Post.pk comment_pk=comment.pk %}">수정하기</a>
     </li>
   {% endfor %}
 </ul>

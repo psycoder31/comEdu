@@ -24,6 +24,10 @@ urlpatterns = [
 
     url(r'^post/(?P<pk>[-\d]+)/delete/$', post_delete, name = 'post_delete'),
 
+    url(r'^post/(?P<pk>[-\d]+)/(?P<comment_pk>[-\d]+)/commentedit/$', post_comment_edit, name = 'post_comment_edit'),
+
+    url(r'^post/(?P<pk>[-\d]+)/(?P<comment_pk>[-\d]+)/commentdelete/$', post_comment_delete, name = 'post_comment_delete'),
+
     url(r'^(?P<slug>[-\w]+)/search/$', post_search, name='post_search'),
 
     url(r'^album/(?P<pk>[-\d]+)/$', album_DV, name = 'album_detail'),
@@ -32,8 +36,8 @@ urlpatterns = [
 
     url(r'^album/(?P<pk>[-\d]+)/delete/$', album_delete, name = 'album_delete'),
 
-    # url(r'^album/(?P<pk>[-\d]+)/commentedit/$', album_commentedit, name = 'album_commentedit'),
+    url(r'^album/(?P<pk>[-\d]+)/(?P<comment_pk>[-\d]+)/commentedit/$', album_comment_edit, name = 'album_comment_edit'),
 
-
+    url(r'^album/(?P<pk>[-\d]+)/(?P<comment_pk>[-\d]+)/commentdelete/$', album_comment_delete, name = 'album_comment_delete'),
 
 ]

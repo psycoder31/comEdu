@@ -26,7 +26,7 @@ def post_LV(request, slug):
     return render_to_response(template_name, {'posts' : results, 'index' : category, 'slug':slug,})
 
 
-def post_DV(request, pk):
+def post_DV(request, pk=None):
     qs = Post.objects.get(pk=pk)
     cat = Category.objects.get(name = qs.category)
     if request.method == 'POST':
@@ -186,7 +186,7 @@ def new_album(request):
                 return redirect('/blog/album')
         return render(request, 'blog/new_album.html', {'form': form})
 
-def album_DV(request, pk ):
+def album_DV(request, pk=None, comment_pk=None):
     qs = AlbumPost.objects.get(pk=pk)
     if request.method == 'POST':
         if request.user.is_authenticated:
@@ -277,16 +277,69 @@ def album_search(request):
             return render_to_response('blog/album_all.html', {'error':True })
 
 
+def album_comment_delete(request, pk, comment_pk):
+    qs = Comment.objects.get(pk=comment_pk)
+    if request.user == qs.author or request.user.is_manager == True :
+        Comment(pk=comment_pk).delete()
+        return redirect('/blog/album/%s' % (pk))
+    else :
+        return redirect ('/blog/not_admin')
+
+
+def album_comment_edit(request, pk, comment_pk):
+    if pk :
+        comment = get_object_or_404(Comment, id=comment_pk)
+    else :
+        return HttpResponseForbidden()
+    form = CommentForm(request.POST or None, instance=comment)
+    if request.POST and form.is_valid():
+        form.modify_date = forms.DateTimeField(timezone.now())
+        form.author = request.user
+        form.save()
+        return redirect('/blog/album/%s' % (pk))
+    if request.user == comment.author or request.user.is_manager == True :
+        return render(request, 'blog/album_comment_edit.html', {'form' : form})
+    else :
+        return redirect ('/blog/not_admin')
+
+
+def post_comment_delete(request, pk, comment_pk):
+    qs = Comment.objects.get(pk=comment_pk)
+    if request.user == qs.author or request.user.is_manager == True :
+        Comment(pk=comment_pk).delete()
+        return redirect('/blog/')
+    else :
+        return redirect ('/blog/not_admin')
+
+
+def post_comment_edit(request, pk, comment_pk):
+    if pk :
+        comment = get_object_or_404(Comment, id=comment_pk)
+    else :
+        return HttpResponseForbidden()
+    form = CommentForm(request.POST or None, instance=comment)
+    if request.POST and form.is_valid():
+        form.modify_date = forms.DateTimeField(timezone.now())
+        form.author = request.user
+        form.save()
+        return redirect('/blog/')
+    if request.user == comment.author or request.user.is_manager == True :
+        return render(request, 'blog/post_comment_edit.html', {'form' : form})
+    else :
+        return redirect ('/blog/not_admin')
+
+
 # def album_commentedit(request, album_pk, pk):
-#     comment = Comment.objects.get(pk=album_pk)
-#     qs = AlbumPost.objects.get(pk=pk)
+#     comment = Comment.objects.get(pk=pk)
+#     album = AlbumPost.objects.get(pk=album_pk)
+#
 #     if request.method == 'POST':
-#         form = AlbumForm(request.POST, request.FILES or None, instance = comment)
+#         form = CommentForm(request.POST or None, instance = comment)
 #         if form.is_valid():
 #             comment = form.save(commit = False)
-#             comment.album = AlbumPost.objects.get(pk = pk)
+#             comment.album = AlbumPost.objects.get(pk = album_pk)
 #             comment.save()
-#             return redirect('/blog/album/%s' % (pk))
+#             return redirect('blog.views.album_DV' , album_pk)
 #     else:
 #         form = CommentForm(instance = comment)
-#     return render(request, 'blog/album_detail.html', {'form' : form, 'Album':qs})
+#     return render(request, 'blog/album_detail.html', {'form' : form, 'Album':album})

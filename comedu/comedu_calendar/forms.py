@@ -1,6 +1,6 @@
 from django import forms
 from django.db import models
-from django.forms.extras.widgets import SelectDateWidget, SelectTimeWidget
+from django.forms.extras.widgets import SelectDateWidget
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django.utils import timezone
 from django.contrib.admin import widgets

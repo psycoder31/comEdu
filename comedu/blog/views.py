@@ -307,7 +307,7 @@ def post_comment_delete(request, pk, comment_pk):
     qs = Comment.objects.get(pk=comment_pk)
     if request.user == qs.author or request.user.is_manager == True :
         Comment(pk=comment_pk).delete()
-        return redirect('/blog/')
+        return redirect('/blog/post/%s' % (pk))
     else :
         return redirect ('/blog/not_admin')
 
@@ -322,7 +322,7 @@ def post_comment_edit(request, pk, comment_pk):
         form.modify_date = forms.DateTimeField(timezone.now())
         form.author = request.user
         form.save()
-        return redirect('/blog/')
+        return redirect('/blog/post/%s' % (pk))
     if request.user == comment.author or request.user.is_manager == True :
         return render(request, 'blog/post_comment_edit.html', {'form' : form})
     else :

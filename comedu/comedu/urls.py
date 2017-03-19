@@ -37,6 +37,8 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     # main page
     url(r'^$', mainView, name='home'),
+
+    url("^soc/", include("social_django.urls", namespace="social")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
